@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq2mt0c5yulu3"]
+[gd_scene load_steps=5 format=3 uid="uid://bq2mt0c5yulu3"]
 
-[ext_resource type="Script" uid="uid://b4x7syl8kgqp1" path="res://FPSCharacter.gd" id="1_nnjcf"]
+[ext_resource type="Script" uid="uid://b4x7syl8kgqp1" path="res://scripts/FPSCharacter.gd" id="1_nnjcf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tt6jn"]
 height = 1.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nnjcf"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nnjcf"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:rotation:y")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Head/Camera3D:rotation:x")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="FPSCharacter" type="CharacterBody3D"]
 script = ExtResource("1_nnjcf")
@@ -18,9 +34,16 @@ shape = SubResource("CapsuleShape3D_tt6jn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-current = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D"]
 light_energy = 4.232
 spot_range = 186.844
 spot_angle = 23.18
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_nnjcf")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_nnjcf")
