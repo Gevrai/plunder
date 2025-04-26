@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://dixlhvfnv80cc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqteh"]
+albedo_color = Color(0.515662, 0.930652, 3.85046e-07, 1)
+emission_enabled = true
+emission = Color(0, 0.929412, 0, 1)
+emission_energy_multiplier = 2.0
+
+[node name="Terrain" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, -6.07955)
+flip_faces = true
+
+[node name="Corridor1" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.229248, 0, 0)
+flip_faces = true
+size = Vector3(20.4585, 3, 3)
+
+[node name="Corridor2" type="CSGBox3D" parent="CSGCombiner3D"]
+flip_faces = true
+size = Vector3(3, 3, 20)
+
+[node name="LivingQuarters" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10.5698)
+flip_faces = true
+size = Vector3(15, 5, 15)
+
+[node name="EngineRoom" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -14)
+flip_faces = true
+radius = 5.0
+height = 10.0
+sides = 6
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 15, 0, 0)
+flip_faces = true
+radius = 5.0
+height = 3.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.272034, 0)
+flip_faces = true
+size = Vector3(1, 2.45593, 1.58789)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
+flip_faces = true
+radius = 40.0
+height = 3.0
+sides = 32
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D3"]
+operation = 2
+flip_faces = true
+radius = 35.0
+height = 3.0
+sides = 32
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(3.1, 0, 0, 0, 3.2, 0, 0, 0, 2.9, 0.0413055, 3.05608, -14.0215)
+transparency = 0.65
+material = SubResource("StandardMaterial3D_mqteh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGCylinder3D"]
+transform = Transform3D(0.322581, 0, 0, 0, 0.3125, 0, 0, 0, 0.344828, 0, 0.381807, 0)
+light_color = Color(0.215686, 1, 0.101961, 1)
+omni_range = 10.65
