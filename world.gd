@@ -15,7 +15,14 @@ func _ready():
 		add_child(multiplayer_scene.instantiate())
 	else:
 		print("Single player mode")
-		add_child(singleplayer_scene.instantiate())
+		var player = singleplayer_scene.instantiate()
+
+		var spawns = $Spawns.get_children()
+		var spawn = spawns[randi() % spawns.size()]
+		player.position = spawn.position
+
+		add_child(player)
+
 	
 	if OS.has_feature("web"):
 		# On browsers we need to capture the mouse from a button press
