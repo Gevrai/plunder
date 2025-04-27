@@ -16,3 +16,8 @@ func _ready():
 	else:
 		print("Single player mode")
 		add_child(singleplayer_scene.instantiate())
+	
+	if OS.has_feature("web"):
+		# On browsers we need to capture the mouse from a button press
+		var button = load("res://scenes/ui/web_capture_mouse.tscn").instantiate()
+		add_child(button)
