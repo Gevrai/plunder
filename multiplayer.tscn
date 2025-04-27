@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://3qn12hejsg5u"]
+
+[ext_resource type="PackedScene" uid="uid://b3rlt8nyecur3" path="res://multiplayer_menu.tscn" id="1_wktud"]
+[ext_resource type="PackedScene" uid="uid://bq2mt0c5yulu3" path="res://FPSCharacter.tscn" id="2_5bi2t"]
+
+[node name="Multiplayer" type="Node"]
+
+[node name="MultiplayerMenu" parent="." node_paths=PackedStringArray("player_root_tree") instance=ExtResource("1_wktud")]
+player_scene = ExtResource("2_5bi2t")
+player_root_tree = NodePath("../Players")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bq2mt0c5yulu3")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0107, 0.128961, 0)

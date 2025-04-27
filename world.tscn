@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj3l753xl307b"]
+[gd_scene load_steps=5 format=3 uid="uid://dj3l753xl307b"]
 
-[ext_resource type="PackedScene" uid="uid://bq2mt0c5yulu3" path="res://FPSCharacter.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://4i7qt303uj3m" path="res://world.gd" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://dixlhvfnv80cc" path="res://terrain.tscn" id="2_fj7yv"]
-[ext_resource type="PackedScene" uid="uid://b3rlt8nyecur3" path="res://multiplayer_menu.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://ddh0cyaege5je" path="res://environment/door/doors.tscn" id="5_036b0"]
 
 [sub_resource type="Environment" id="Environment_f3sb7"]
 ambient_light_energy = 0.0
@@ -14,21 +13,12 @@ fog_density = 0.1574
 
 [node name="World" type="Node"]
 script = ExtResource("1_tlwt5")
+is_multiplayer = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f3sb7")
 
 [node name="Terrain" parent="." instance=ExtResource("2_fj7yv")]
 
-[node name="Multiplayer" type="Node" parent="."]
-
-[node name="MultiplayerMenu" parent="Multiplayer" node_paths=PackedStringArray("player_root_tree") instance=ExtResource("3_tlwt5")]
-player_scene = ExtResource("1_f3sb7")
-player_root_tree = NodePath("../Players")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Multiplayer"]
-_spawnable_scenes = PackedStringArray("uid://bq2mt0c5yulu3")
-spawn_path = NodePath("../Players")
-
-[node name="Players" type="Node3D" parent="Multiplayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0107, 0.128961, 0)
+[node name="Door" parent="." instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.877, 0, 0)

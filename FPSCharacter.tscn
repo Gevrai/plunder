@@ -22,6 +22,7 @@ properties/3/spawn = true
 properties/3/replication_mode = 1
 
 [node name="FPSCharacter" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_nnjcf")
 speed = 2.0
 run_speed = 4.0
