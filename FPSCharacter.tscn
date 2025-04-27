@@ -41,6 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 light_color = Color(0.250381, 0.471976, 0.424515, 1)
 light_energy = 5.0
 shadow_enabled = true
+shadow_bias = 0.5
 spot_range = 200.0
 spot_angle = 30.0
 
