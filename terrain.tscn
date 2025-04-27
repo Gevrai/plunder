@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dixlhvfnv80cc"]
+[gd_scene load_steps=4 format=3 uid="uid://dixlhvfnv80cc"]
+
+[ext_resource type="Material" uid="uid://wfdrc4pdxlcm" path="res://assets/metal/metal.tres" id="1_0u6kl"]
+[ext_resource type="Material" uid="uid://bgsf40hqrwy0v" path="res://assets/wall/wall.tres" id="1_206su"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqteh"]
 albedo_color = Color(0.515662, 0.930652, 3.85046e-07, 1)
@@ -7,10 +10,10 @@ emission = Color(0, 0.929412, 0, 1)
 emission_energy_multiplier = 2.0
 
 [node name="Terrain" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = ExtResource("1_0u6kl")
 use_collision = true
 
 [node name="Corridor1" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -36,6 +39,7 @@ flip_faces = true
 
 [node name="LivingQuarters" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10.5698)
+material_override = ExtResource("1_206su")
 flip_faces = true
 size = Vector3(15, 5, 15)
 

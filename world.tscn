@@ -5,15 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://ddh0cyaege5je" path="res://environment/door/doors.tscn" id="5_036b0"]
 
 [sub_resource type="Environment" id="Environment_f3sb7"]
-ambient_light_energy = 0.0
+ambient_light_color = Color(0.0344051, 0.103484, 0.0888273, 1)
+tonemap_mode = 3
+tonemap_white = 6.0
 glow_enabled = true
+glow_bloom = 0.5
 fog_enabled = true
 fog_light_color = Color(0.0344051, 0.103484, 0.0888273, 1)
 fog_density = 0.1574
 
 [node name="World" type="Node"]
 script = ExtResource("1_tlwt5")
-is_multiplayer = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f3sb7")
@@ -22,3 +24,6 @@ environment = SubResource("Environment_f3sb7")
 
 [node name="Door" parent="." instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.877, 0, 0)
+
+[node name="Door2" parent="." instance=ExtResource("5_036b0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2)

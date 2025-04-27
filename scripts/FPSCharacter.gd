@@ -12,7 +12,9 @@ extends CharacterBody3D
 @onready var collision : CollisionShape3D = get_node("CollisionShape3D")
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(str(name).to_int())
+	var id = str(name).to_int()
+	if id != 0:
+		set_multiplayer_authority(str(name).to_int())
 
 func _ready():
 	if not is_multiplayer_authority(): return
